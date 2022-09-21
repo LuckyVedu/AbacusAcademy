@@ -15,7 +15,7 @@ class Signup extends Component{
                         id="password"
                         className="password-input-filed"
                         // value={password}
-                        //   onChange={this.onChangePassword}
+                        //   onChange={this.onChangePassword}.
                     />
                     <input
                         type="password"
