@@ -1,8 +1,17 @@
 import React from 'react'
 import Header from './Nav'
-import './Main.css'
+import Cookies from 'js-cookie'
+import { Redirect } from 'react-router-dom'
+import './Home.css'
+  
+const Home = () => {
+  const jwtToken = Cookies.get('jwt_token')
+  if (jwtToken === undefined){
+    return <Redirect to='/login'/>
 
-const Home = () => (
+    
+  }
+  return (
   <>
     <Header />
     <div className="home-container">
@@ -31,6 +40,6 @@ const Home = () => (
       />
     </div>
   </>
-)
+)}
 
 export default Home

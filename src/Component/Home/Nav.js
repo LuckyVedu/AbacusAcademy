@@ -1,8 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+// import Cookies from 'js-cookie'
 import './Nav.css'
 
-const Header = () => (
+const Header = props => {
+  
+//  const onClickLogout = () =>{
+//     const {history} = props
+//     Cookies.remove('jwt_token')
+//     history.replace('/')
+//   }
+  
+  return (
   <nav className="nav-header">
     <div className="nav-content">
       <img
@@ -27,7 +36,7 @@ const Header = () => (
           </Link>
         </li>
       </ul>
-      <button type="button" className="logout-desktop-btn">
+      <button type="button" className="logout-desktop-btn" >
         Logout
       </button>
       <button type="button" className="logout-mobile-btn">
@@ -39,5 +48,5 @@ const Header = () => (
       </button>
     </div>
   </nav>
-)
-export default Header
+)}
+export default Header 

@@ -111,7 +111,7 @@
   .login-button {
     font-family: 'Roboto';
     font-weight: bold;
-    font-size: 14px;
+    font-size: 17px;
     color: #ffffff;
     height: 40px;
     width: 100%;
@@ -124,19 +124,23 @@
   
   .error-message {
     align-self: start;
-    font-size: 12px;
-    margin-top: 3px;
-    margin-bottom: 0px;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 2px;
     font-family: 'Roboto';
-    font-size: 12px;
     line-height: 16px;
     color: #ff0b37;
   }
   
-  .signuplink{
-    display: flex;
-    align-items: center;
-    /* margin-bottom: 30px; */
-    margin-left: 350px;
-    
+  .signupLink{
+   color: #0c89d1c2;
+   font-size: 17px;
+   text-decoration: underline;
+   font-family: serif;
+   font-weight: bold;
+  }
+
+  .signupPara {
+    font-family: Roboto;
+    font-size: 16px;
   }

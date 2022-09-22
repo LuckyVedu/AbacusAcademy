@@ -5,10 +5,10 @@ import React from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 
-import LoginForm from './componnent/Loginpage/Login'
-import Home from './History/Main'
-import Signup from './Signup/Signup'
-import NotFound from './componnent/Router/NotFound'
+import LoginForm from './Component/Loginpage/Login'
+import Home from './Component/Home/Home'
+import Signup from './Component/SignUpPage/Signup'
+import NotFound from './Component/NotfoundPage/NotFound'
 import './App.css'
 
 const App = () => (

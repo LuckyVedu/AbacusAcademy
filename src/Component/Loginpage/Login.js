@@ -1,4 +1,6 @@
 import React from 'react'
+import Cookies from 'js-cookie'
+import { Redirect } from 'react-router-dom'
 import  {Component} from 'react'
 import {Link} from "react-router-dom"
 import './Login.css'
@@ -7,11 +9,16 @@ class LoginForm extends Component {
   state = {
     email: '',
     password: '',
+    valuesNotMatch: false
   }
-  onSucbmitSuccess = () =>{
-    console.log("function called");
+  onSucbmitSuccess = data =>{
+    Cookies.set('jwt_token', data, {expires:30})
     const {history} = this.props
     history.push('/')
+    
+  }
+  showErrorMessage = () => {
+    this.setState({valuesNotMatch: true})
   }
   
   submitForm = async (event) => {
@@ -33,14 +40,16 @@ class LoginForm extends Component {
     if(data){
         console.log("data",data);
 
-        this.onSucbmitSuccess()
+        this.onSucbmitSuccess(data)
+    } else{
+      this.showErrorMessage()
     }
    
       
     
   }
 
-  onChangeUsername = event => {
+  onChangeEmail = event => {
     this.setState({email: event.target.value})
   }
 
@@ -66,7 +75,7 @@ class LoginForm extends Component {
     )
   }
 
-  renderUsernameField = () => {
+  renderEmailField = () => {
     const {email} = this.state
     return (
       <>
@@ -75,17 +84,21 @@ class LoginForm extends Component {
         </label>
         <input
           type="text"
-          id="username"
+          id="email"
           className="username-input-filed"
           value={email}
-          onChange={this.onChangeUsername}
+          onChange={this.onChangeEmail}
         />
       </>
     )
   }
 
   render() {
-    
+    const {valuesNotMatch} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined){
+      return <Redirect to="/"/>
+    }
     return (
      <div>
          <div className="login-form-container">
@@ -101,16 +114,18 @@ class LoginForm extends Component {
            className="login-website-logo-desktop-image"
            alt="website logo"
          />
-         <div className="input-container">{this.renderUsernameField()}</div>
+         <div className="input-container">{this.renderEmailField()}</div>
          <div className="input-container">{this.renderPasswordField()}</div>
+         {valuesNotMatch && <p className='error-message'>User and Password did'nt match</p>}
          <button type="submit" className="login-button">
            Login
          </button>
+         <p className='signupPara'>New user?   <Link to="/signup"> <span className='signupLink'> Signup</span> </Link> </p>
        </form>
      </div>
-      <div className="signuplink">
-        <p>New user? <Link to="/signup"> <span><button>Signup</button></span> </Link> </p>
-      </div>
+      {/* <div className="signuplink">
+       
+      </div> */}
      </div>
     )
   }
