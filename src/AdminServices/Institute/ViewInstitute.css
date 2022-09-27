@@ -1,0 +1,15 @@
+.institute-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+@media screen and (min-width: 786px){
+  .institute-container{
+   
+    display: grid;
+  grid-template-columns: auto auto auto auto;
+  overflow: auto;
+  }
+}

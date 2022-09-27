@@ -1,16 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-// import Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import './Nav.css'
+// import history from './history'
+import { useHistory } from "react-router-dom";
+// import { history } from 'react-router';
 
-const Header = props => {
-  
-//  const onClickLogout = () =>{
-//     const {history} = props
-//     Cookies.remove('jwt_token')
-//     history.replace('/')
-//   }
-  
+const Header = (props) => {
+  const history = useHistory();
+  const logout = () =>{
+    Cookies.remove('jwt_token');
+    localStorage.removeItem("userRole");
+    history.push('/')
+  }
+
+    // const clickCustom  = (event) => {
+    //   parentCallback(text);
+    //   event.preventDefault();
+    // }
+
+  const {shouldShow=false, text, parentCallback} = props;
   return (
   <nav className="nav-header">
     <div className="nav-content">
@@ -26,25 +35,27 @@ const Header = props => {
           </Link>
         </li>
         <li>
-          <Link to="/products" className="nav-link">
-            Academy
+          <Link to="/cart" className="nav-link">
+            View Students
+          </Link>
+        </li>
+        <li>
+          <Link to="/institute" className="nav-link">
+            View Institute
           </Link>
         </li>
         <li>
           <Link to="/cart" className="nav-link">
-            Course
+            View Courses
           </Link>
         </li>
+    
       </ul>
-      <button type="button" className="logout-desktop-btn" >
+      {/* {shouldShow && <button type="button" className="logout-desktop-btn" onClick={clickCustom} >
+        {text}
+      </button>} */}
+      <button type="button" className="logout-desktop-btn" onClick={logout} >
         Logout
-      </button>
-      <button type="button" className="logout-mobile-btn">
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png"
-          alt="logout icon"
-          className="logout-icon"
-        />
       </button>
     </div>
   </nav>

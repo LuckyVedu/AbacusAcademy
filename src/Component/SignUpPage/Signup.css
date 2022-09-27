@@ -105,7 +105,7 @@
 
   .selectUserType{
     height: 40px;
-    width: 256px;
+    /* width: 256px; */
     border: 1px solid #7288a3;
     background-color: #e2e8f0;
     color: #64748b;
@@ -138,9 +138,10 @@
     background-color: #0b69ff;
     border-radius: 8px;
     border: none;
+    cursor: pointer;
   }
   
-  .error-message {
+  .userError {
     align-self: start;
     font-size: 12px;
     margin-top: 3px;
@@ -169,4 +170,11 @@
     color: black;
     font-family: Roboto;
     font-size: 14px;
+  }
+  .error{
+    color: red;
+    margin: unset;
+  }
+  .border-err{
+    border: 1px red solid;
   }
